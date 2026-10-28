@@ -392,7 +392,7 @@ for (i, name) in names.enumerate(){
 }
 ```
 
-All loops can be assigned a name with the keyword as to allow for nested break continue and yield
+All loops can be assigned a name with the keyword 'as' to allow for nested break continue and yield
 
 ```
 let mut entities: List(Entity);
