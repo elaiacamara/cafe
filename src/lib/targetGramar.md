@@ -4,7 +4,7 @@ This is how i would design my language, the current program is nowhere close.
 Most of the syntax is borrowed from rust.
 
 ## Goals
-Simple realiable code.
+Simple reliable code.
 All code that can run at compile time will run at compile time.
 
 
@@ -30,13 +30,13 @@ Optional
 ### Declaration
 
 ```
-let a: i32 = 10; //inmutable a variable
-let a = 10; //type asertion
+let a: i32 = 10; //immutable a variable
+let a = 10; //type assertion
 let mut a = 10; //mutable variable
 let cmp a = 10; //must be known at compile time
 ```
 
-### Funcition declaration
+### Function declaration
 ```
 fn hello_world(){
     print("hello world");
@@ -62,8 +62,8 @@ infer return type in one line
 fn add(a: i32, b: i32) => a + b;
 
 ```
-#### Anonimous functions and functions as parameters
-Anonimous functions
+#### Anonymous functions and functions as parameters
+Anonymous functions
 ```
 fn main(){
     let callable = (a: i32, b: 32) -> i32 = a + b; 
@@ -192,9 +192,9 @@ struct Server <SetUp | Running | Paused | Finished <Success | Crashed> >{
 We can declare the subset of states a struct can be in.
 Members declared without a specifier can be accessed at any state.
 A struct instance must always be in one state.
-Protects developers from half initalized structs, keeps data that is not meant to be used in that moment hidden.
-All struct member variables exists as if in a normal struct, their access and visibily is simply reduced.
-Can easly create state machines
+Protects developers from half initialized structs, keeps data that is not meant to be used in that moment hidden.
+All struct member variables exists as if in a normal struct, their access and visibility is simply reduced.
+Can easily create state machines
 
 #### Functions access and state transitions
 
@@ -214,7 +214,7 @@ impl Server{
     }
 }
 ```
-You only need to initialize the variables that have newly be exposed when entering that speficic state, in this case only name and port
+You only need to initialize the variables that have newly be exposed when entering that specific state, in this case only name and port
 
 The state of a struct can only be changed in a member mutable function.
 Still deciding syntax
@@ -337,14 +337,14 @@ fn main(){
     }
 }
 ```
-The watch control flow receives a variable that will match, upon completion it will once again do a match indefinetly in a loop.
+The watch control flow receives a variable that will match, upon completion it will once again do a match indefinitely in a loop.
 All cases must be handled within flow.
 
 The loop breaks when a branch yields a value.
 
-This method would give an error at any unhandle case meaning adding a new state would trigger compilations errors every time.
+This method would give an error at any unhandled case meaning adding a new state would trigger compilations errors every time.
 
-We can then match the final posible states to know how it ended.
+We can then match the final possible states to know how it ended.
 
 
 #### Loop
@@ -392,7 +392,7 @@ for (i, name) in names.enumerate(){
 }
 ```
 
-All loops can be asigned a name with the keyword as to allow for nested break continue and yield
+All loops can be assigned a name with the keyword as to allow for nested break continue and yield
 
 ```
 let mut entities: List(Entity);
@@ -422,7 +422,7 @@ th NonZero(num: i32) -> Result(i32){
     Ok(num)
 }
 ```
-We can then apply it to the paramter of a function
+We can then apply it to the parameter of a function
 
 ```
 fn div(a: i32, b: NonZero i32) -> Result(i32){
@@ -430,7 +430,7 @@ fn div(a: i32, b: NonZero i32) -> Result(i32){
 }
 ```
 
-The th NonZero will run before any code of the function is executed and it will early return any errors if encontered. The final variable b will just be of type i32 inside the function.
+The th NonZero will run before any code of the function is executed and it will early return any errors if encountered. The final variable b will just be of type i32 inside the function.
 This means that div must be Result of something, forced by the rule.
 
 We can force this check to be done at compile time by adding cmp
@@ -439,12 +439,12 @@ fn div(a: i32, b: cmp NonZero i32) -> i32{
     a / b
 }
 ```
-Note that NonZero doens't need to change, just adding cmp will force the compiler to know the value of b at compile time. If it cannot be known that same error will instead propagate during compilatin and be presented as a compile time error.
+Note that NonZero doesn't need to change, just adding cmp will force the compiler to know the value of b at compile time. If it cannot be known that same error will instead propagate during compilation and be presented as a compile time error.
 
 Because the error happens at compile time we no longer need the Result for the function
 
 Multiple th can be combined
-And a th can have its own parameters ruled, making composition posible
+And a th can have its own parameters ruled, making composition possible
 
 ```
 th NonZero(num: i32){
@@ -493,7 +493,7 @@ th Positive(num: i32){
     }
     Ok(num)
 }
-fn random_positive() -> Result(Posivite i32){
+fn random_positive() -> Result(Positive i32){
     let random_num : i32 = std::random::next_int();
     Ok(random_num)
 }
