@@ -338,7 +338,7 @@ fn main(){
 }
 ```
 The watch control flow receives a variable that will match, upon completion it will once again do a match indefinitely in a loop.
-All cases must be handled within flow.
+All cases must be handled within watch.
 
 The loop breaks when a branch yields a value.
 
